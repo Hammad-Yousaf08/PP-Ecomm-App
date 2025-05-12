@@ -1,0 +1,50 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: PP-Ecomm-App
+
+on:
+  push:
+    branches:
+      - main  # Run the workflow on every push to the 'main' branch
+  pull_request:
+    branches:
+      - main  # Run the workflow on pull requests targeting the 'main' branch
+
+jobs:
+  build:
+    runs-on: self-hosted 
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+   
+      with:
+        node-version: '17'  # Replace with your desired Node.js version
+    - name: working directory
+      run: |
+        /home/octaloop/PP-Ecomm-App/actions-runner
+
+    - name: image building
+      run: |
+        docker build -t pp-ecomm-app-image .
+    - name: container building
+      run: |
+        docker run -d -p 3000:3000 --name pp-ecomm-app-container pp-ecomm-app-image
+    - name: Check if the container is running, then stop and remove it
+      run: |
+        # Check if the container is running
+        if docker ps -q --filter "name=pp-ecomm-app-container"; then
+          echo "Stopping and removing container my-running-container..."
+          docker stop my-running-container
+          docker rm my-running-container
+        else
+          echo "Container is not running. Skipping stop and remove."
+        fi
+  
+    - name: Build application
+      run: |
+        npm run build  # Replace with your build script if needed
+
+   

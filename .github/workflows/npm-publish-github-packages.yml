@@ -24,7 +24,7 @@ jobs:
         node-version: '17'  # Replace with your desired Node.js version
     - name: working directory
       run: |
-        /home/octaloop/PP-Ecomm-App/actions-runner/run.sh
+        /home/octaloop/PP-Ecomm-App/actions-runner
 
     - name: image building
       run: |
@@ -45,6 +45,6 @@ jobs:
   
     - name: Build application
       run: |
-        npm run build  # Replace with your build script if needed
+        npm run start # Replace with your build script if needed
 
    

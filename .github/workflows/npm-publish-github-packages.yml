@@ -7,8 +7,7 @@ on:
   push:
     branches:
       - main  # Run the workflow on every push to the 'main' branch
-    paths:
-      - '**/*'  # Yeh wildcard hai, jo har file ko track karega. Aap specific files bhi mention kar sakte hain.
+     # Yeh wildcard hai, jo har file ko track karega. Aap specific files bhi mention kar sakte hain.
 
 jobs:
   build:
@@ -16,9 +15,8 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-       repository: 'Hammad-Yousaf08/PP-Ecomm-App' 
+      uses: actions/checkout@v4
+    
        
 
     - name: Set up Node.js

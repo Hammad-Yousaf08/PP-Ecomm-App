@@ -55,6 +55,4 @@ jobs:
           echo "Container pp-ecomm-app-container is not running. Skipping stop and remove."
         fi
 
-    - name: Start the application
-      run: |
-        npm run start
+    

@@ -33,11 +33,7 @@ jobs:
     - name: Build Docker image
       run: |
         docker build -t pp-ecomm-app-image .
-
-    - name: Run Docker container
-      run: |
-        docker run -d -p 3000:3000 --name pp-ecomm-app-container pp-ecomm-app-image
-
+    
     - name: Check if the container is running, then stop and remove it
       run: |
         if docker ps -q --filter "name=pp-ecomm-app-container"; then
@@ -48,5 +44,9 @@ jobs:
         else
           echo "Container pp-ecomm-app-container is not running. Skipping stop and remove."
         fi
+
+    - name: Run Docker container
+      run: |
+        docker run -d -p 3000:3000 --name pp-ecomm-app-container pp-ecomm-app-image
 
     

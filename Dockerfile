@@ -1,4 +1,4 @@
-# Node.js version 17  hammad
+# Node.js version 17 ha is ka
 FROM node:17
 
 # Application ke files ko rakhne ke liye directory banayein

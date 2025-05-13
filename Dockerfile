@@ -1,4 +1,4 @@
-# Node.js version 17 ka official 
+# Node.js version 17 ka  
 FROM node:17
 
 # Application ke files ko rakhne ke liye directory banayein

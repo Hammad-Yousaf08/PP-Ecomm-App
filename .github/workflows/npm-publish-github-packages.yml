@@ -22,7 +22,7 @@ jobs:
       run: |
         echo "Pulling the latest code..."
         cd /home/octaloop/PP-Ecomm-App/actions-runner/PP-Ecomm-App  # Path to self-hosted runner directory
-       
+        git pull origin main 
 
     - name: Set up Node.js
       uses: actions/setup-node@v2

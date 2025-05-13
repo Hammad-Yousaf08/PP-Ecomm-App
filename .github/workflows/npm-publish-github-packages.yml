@@ -16,7 +16,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    
+      
+    # Sync latest code on self-hosted runner (ensure the latest changes are pulled)
+    - name: Sync latest code on self-hosted runner
+      run: |
+        echo "Pulling the latest code..."
+        cd /home/octaloop/PP-Ecomm-App/actions-runner/PP-Ecomm-App  # Path to self-hosted runner directory
        
 
     - name: Set up Node.js

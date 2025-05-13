@@ -7,9 +7,8 @@ on:
   push:
     branches:
       - main  # Run the workflow on every push to the 'main' branch
-  pull_request:
-    branches:
-      - main  # Run the workflow on pull requests targeting the 'main' branch
+    paths:
+      - '**/*'  # Yeh wildcard hai, jo har file ko track karega. Aap specific files bhi mention kar sakte hain.
 
 jobs:
   build:

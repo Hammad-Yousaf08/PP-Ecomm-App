@@ -19,32 +19,34 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-   
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
       with:
         node-version: '17'  # Replace with your desired Node.js version
-    - name: working directory
+
+    - name: Set working directory
       run: |
         cd /home/octaloop/PP-Ecomm-App/actions-runner/PP-Ecomm-App
 
-
-    - name: image building
+    - name: Build image
       run: |
         docker build -t pp-ecomm-app-image .
-    - name: container building
+
+    - name: Run container
       run: |
         docker run -d -p 3000:3000 --name pp-ecomm-app-container pp-ecomm-app-image
+    
     - name: Check if the container is running, then stop and remove it
       run: |
-        # Check if the container is running
         if docker ps -q --filter "name=pp-ecomm-app-container"; then
-          echo "Stopping and removing container my-running-container..."
-          docker stop my-running-container
-          docker rm my-running-container
+          echo "Stopping and removing container pp-ecomm-app-container..."
+          # Stop and remove the container
+          docker stop pp-ecomm-app-container || true
+          docker rm pp-ecomm-app-container || true
         else
-          echo "Container is not running. Skipping stop and remove."
+          echo "Container pp-ecomm-app-container is not running. Skipping stop and remove."
         fi
-  
+
     - name: Build application
       run: |
-        npm run start 
-   
+        npm run start
